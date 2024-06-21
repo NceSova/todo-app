@@ -2,11 +2,14 @@ import {Note} from "./model";
 
 export default class View {
   document: Document;
-  constructor(document: Document) {
+  clickHandler: Function;
+  constructor(document: Document, callback: Function) {
     this.document = document;
+    this.clickHandler = callback;
   }
   renderNotes(notes: Note[]) {
     const grid = this.document.querySelector(".main-grid");
+    grid.innerHTML = "";
     notes.forEach((note) => {
       console.log("note created");
       grid.appendChild(this.createNoteDiv(note));
@@ -32,6 +35,9 @@ export default class View {
     noteDiv.appendChild(title);
     noteDiv.appendChild(description);
     noteDiv.appendChild(priority);
+    noteDiv.onclick = (event) => {
+      this.clickHandler(event);
+    };
     return noteDiv;
   }
 }

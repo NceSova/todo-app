@@ -21,6 +21,12 @@ export default class Model {
     this._list.push(new Note(title, description, priority));
   }
 
+  deleteNote(uuid: string) {
+    const index = this._list.findIndex((item) => item.uuid === uuid);
+    this._list.splice(index, 1);
+    console.log(this._list);
+  }
+
   getNotes() {
     return this._list;
   }

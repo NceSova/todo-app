@@ -7,7 +7,7 @@ export default class Controller {
   view: View;
   constructor(document: Document) {
     this.model = new Model();
-    this.view = new View(document, this.clickHandler.bind(this));
+    this.view = new View(document, this.noteClickHandler.bind(this));
     this.document = document;
 
     //for debug
@@ -19,7 +19,7 @@ export default class Controller {
     const notes = this.model.getNotes();
     this.view.renderNotes(notes);
   }
-  clickHandler(event: Event) {
+  noteClickHandler(event: Event) {
     const target = event.target as Element;
     const parentUuid = target.parentElement.id;
     console.log(parentUuid);

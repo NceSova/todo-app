@@ -8,6 +8,11 @@ body {
   height: 100vh;
 }
 
+.main-container {
+  display: grid;
+  grid-template-columns: 4fr 7fr;
+}
+
 .main-grid {
   border: 2px solid blue;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

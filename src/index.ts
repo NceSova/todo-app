@@ -1,15 +1,17 @@
 import "./index.css";
 
-import Shelf from "./model";
+import Model from "./model";
 import View from "./view";
+import Controller from "./controller";
 
-const shelf = new Shelf();
+const shelf = new Model();
+const ui = new View(document);
+
 shelf.addNote("Бяка", "sfd", "low");
 shelf.addNote("Бяка", "sfd", "low");
 shelf.addNote("Бяка", "sfd", "low");
 const id = shelf.getNoteUuidByIndex(0);
 shelf.updateNoteByUuid(id, "title", "sadfdsaf");
-console.log(shelf.getNotes());
-console.log(shelf.getNotesJson());
-const ui = new View(document);
-ui.renderNotes(shelf.getNotes());
+
+const controller = new Controller(shelf, ui);
+controller.render();

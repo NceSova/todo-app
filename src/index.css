@@ -9,5 +9,25 @@ body {
 }
 
 .main-grid {
+  border: 2px solid blue;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   display: grid;
+  justify-items: center;
+  padding: 16px;
+  gap: 24px;
+}
+
+.note-container {
+  width: clamp(200px, 100%, 400px);
+  height: 200px;
+  padding: 8px;
+  border-radius: 16px;
+  border: 2px solid red;
+  display: grid;
+  grid-template-rows: 2fr 2fr 1fr;
+}
+
+.note-title {
+  font-size: x-large;
+  font-weight: 600;
 }

@@ -1,6 +1,6 @@
 import {v4 as uuidv4} from "uuid";
 
-class Note {
+export class Note {
   uuid = uuidv4();
   title = "My Reminder";
   description = "This is a blank note";
@@ -21,6 +21,10 @@ export default class Shelf {
   }
 
   getNotes() {
+    return this.#list;
+  }
+
+  getNotesJson() {
     return JSON.stringify(this.#list);
   }
 

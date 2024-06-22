@@ -2,10 +2,16 @@ import {Note} from "./model";
 
 export default class View {
   document: Document;
-  clickHandler: Function;
-  constructor(document: Document, callback: Function) {
+  dblClickEventCallback: Function;
+  setChangeEventCallback: Function;
+  constructor(
+    document: Document,
+    dblClickEventCallback: Function,
+    changeEventCallback: Function
+  ) {
     this.document = document;
-    this.clickHandler = callback;
+    this.dblClickEventCallback = dblClickEventCallback;
+    this.setChangeEventCallback = changeEventCallback;
   }
   renderNotes(notes: Note[]) {
     const grid = this.document.querySelector(".main-grid");
@@ -15,29 +21,31 @@ export default class View {
       grid.appendChild(this.createNoteDiv(note));
     });
   }
+
   createNoteDiv(note: Note) {
     const noteDiv = this.document.createElement("div");
     noteDiv.id = note.uuid;
     noteDiv.classList.add("note-container");
 
-    const title = this.document.createElement("div");
-    title.className = "note-title";
-    title.textContent = note.title;
+    const title = this.document.createElement("input");
+    title.className = "title";
+    title.value = note.title;
 
     const description = this.document.createElement("div");
-    description.className = "note-description";
+    description.className = "description";
     description.textContent = note.description;
 
     const priority = this.document.createElement("div");
-    priority.className = "note-priority";
+    priority.className = "priority";
     priority.textContent = "Приоритет: " + note.priority;
 
     noteDiv.appendChild(title);
     noteDiv.appendChild(description);
     noteDiv.appendChild(priority);
-    noteDiv.onclick = (event) => {
-      this.clickHandler(event);
+    noteDiv.ondblclick = (event) => {
+      this.dblClickEventCallback(event);
     };
+    this.setChangeEventCallback(noteDiv);
     return noteDiv;
   }
 }

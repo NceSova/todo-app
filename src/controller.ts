@@ -16,9 +16,9 @@ export default class Controller {
     this.formSubmitHandler();
 
     //for debug
-    this.model.addNote("Бяка1", "wf", "low");
-    this.model.addNote("Бяка2", "sfd", "mid");
-    this.model.addNote("Бяка3", "sfwed", "high");
+    // this.model.addNote("Бяка1", "wf", "low");
+    // this.model.addNote("Бяка2", "sfd", "mid");
+    // this.model.addNote("Бяка3", "sfwed", "high");
   }
   render() {
     const notes = this.model.getNotes();

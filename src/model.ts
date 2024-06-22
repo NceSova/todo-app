@@ -1,24 +1,31 @@
-import {v4 as uuidv4} from "uuid";
+import {v4 as uuid4} from "uuid";
 
-export class Note {
+export interface Note {
   [index: string]: string;
-  uuid = uuidv4();
-  title = "My Reminder";
-  description = "This is a blank note";
-  priority = "low";
-  constructor(title: string, description: string, priority: string) {
-    this.title = title;
-    this.description = description;
-    this.priority = priority;
-  }
+  uuid: string;
+  title: string;
+  description: string;
+  priority: string;
 }
 
 export default class Model {
   _list: Note[] = Array<Note>();
-  constructor() {}
+  constructor() {
+    this._list = this.loadNotes();
+  }
+
+  toNote() {
+    return;
+  }
 
   addNote(title: string, description: string, priority: string) {
-    this._list.push(new Note(title, description, priority));
+    const elem = {
+      uuid: uuid4(),
+      title: title,
+      description: description,
+      priority: priority,
+    } as Note;
+    this._list.push(elem);
     this.saveNotes();
   }
 
@@ -28,19 +35,21 @@ export default class Model {
 
   loadNotes() {
     const notes = JSON.parse(localStorage.getItem("notes"));
-    console.log(`LOAD: ${notes}`);
-    return notes;
+    const list = Array<Note>();
+    notes.forEach((elem: Object) => {
+      list.push(elem as Note);
+    });
+    return list;
   }
 
   deleteNote(uuid: string) {
     const index = this._list.findIndex((item) => item.uuid === uuid);
     this._list.splice(index, 1);
-    this.loadNotes();
+    this.saveNotes();
   }
 
   getNotes() {
-    return this._list;
-    this.loadNotes();
+    return this.loadNotes();
   }
 
   getNotesJson() {
@@ -62,5 +71,6 @@ export default class Model {
       const note: Note = this._list[index];
       note[field] = data;
     }
+    this.saveNotes();
   }
 }

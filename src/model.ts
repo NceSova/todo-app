@@ -37,6 +37,7 @@ export default class Model {
   loadNotes() {
     const notes = JSON.parse(localStorage.getItem("notes"));
     const list = Array<Note>();
+    console.log(notes);
     notes.forEach((elem: Object) => {
       list.push(elem as Note);
     });

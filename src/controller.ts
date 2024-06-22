@@ -13,6 +13,7 @@ export default class Controller {
       this.setNoteUpdateHandler.bind(this)
     );
     this.document = document;
+    this.formSubmitHandler();
 
     //for debug
     this.model.addNote("Бяка1", "wf", "low");
@@ -40,5 +41,25 @@ export default class Controller {
       this.model.updateNoteByUuid(parentUuid, target.className, target.value);
       this.render();
     });
+  }
+  formSubmitHandler() {
+    this.document
+      .querySelector("#newNoteDialog>form")
+      .addEventListener("submit", (e) => {
+        const title = this.document.querySelector(
+          "#formTitle"
+        ) as HTMLInputElement;
+        const description = this.document.querySelector(
+          "#formDescription"
+        ) as HTMLInputElement;
+        const priority = this.document.querySelector(
+          "#formPriority"
+        ) as HTMLSelectElement;
+        this.model.addNote(title.value, description.value, priority.value);
+        title.value = "";
+        description.value = "";
+        priority.value = "low";
+        this.render();
+      });
   }
 }

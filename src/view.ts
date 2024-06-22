@@ -31,9 +31,9 @@ export default class View {
     title.className = "title";
     title.value = note.title;
 
-    const description = this.document.createElement("div");
+    const description = this.document.createElement("textarea");
     description.className = "description";
-    description.textContent = note.description;
+    description.value = note.description;
 
     const priority = this.document.createElement("div");
     priority.className = "priority";

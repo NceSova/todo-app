@@ -19,16 +19,28 @@ export default class Model {
 
   addNote(title: string, description: string, priority: string) {
     this._list.push(new Note(title, description, priority));
+    this.saveNotes();
+  }
+
+  saveNotes() {
+    localStorage.setItem("notes", this.getNotesJson());
+  }
+
+  loadNotes() {
+    const notes = JSON.parse(localStorage.getItem("notes"));
+    console.log(`LOAD: ${notes}`);
+    return notes;
   }
 
   deleteNote(uuid: string) {
     const index = this._list.findIndex((item) => item.uuid === uuid);
     this._list.splice(index, 1);
-    console.log(this._list);
+    this.loadNotes();
   }
 
   getNotes() {
     return this._list;
+    this.loadNotes();
   }
 
   getNotesJson() {

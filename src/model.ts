@@ -11,6 +11,7 @@ export interface Note {
 export default class Model {
   _list: Note[] = Array<Note>();
   constructor() {
+    this.saveNotes();
     this._list = this.loadNotes();
   }
 

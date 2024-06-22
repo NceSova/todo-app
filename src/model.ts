@@ -11,12 +11,12 @@ export interface Note {
 export default class Model {
   _list: Note[] = Array<Note>();
   constructor() {
-    this.saveNotes();
-    this._list = this.loadNotes();
-  }
-
-  toNote() {
-    return;
+    if (JSON.parse(localStorage.getItem("notes")) === null) {
+      localStorage.setItem("notes", this.getNotesJson());
+    }
+    const initialNotes = this.loadNotes();
+    console.log(initialNotes);
+    this._list = initialNotes;
   }
 
   addNote(title: string, description: string, priority: string) {

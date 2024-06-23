@@ -40,12 +40,18 @@ export default class View {
     noteDiv.classList.add(note.priority);
     priority.textContent = "Приоритет: " + note.priority;
 
+    const deleteButton = this.document.createElement("button");
+    deleteButton.className = "delete";
+    deleteButton.textContent = "Удалить";
+    deleteButton.onclick = (e) =>
+      this.dblClickEventCallback(
+        (e.target as Element).parentElement.parentElement.id
+      );
+    priority.appendChild(deleteButton);
+
     noteDiv.appendChild(title);
     noteDiv.appendChild(description);
     noteDiv.appendChild(priority);
-    noteDiv.ondblclick = (event) => {
-      this.dblClickEventCallback(event);
-    };
     this.setChangeEventCallback(noteDiv);
     return noteDiv;
   }

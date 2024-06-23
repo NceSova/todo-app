@@ -64,7 +64,7 @@ dialog::backdrop {
 .note-container {
   width: clamp(180px, 100%, 300px);
   height: 150px;
-  border-radius: 16px;
+  border-radius: 20px;
   border: 2px solid red;
   display: grid;
   grid-template-rows: 2fr 4fr 1fr;
@@ -88,7 +88,15 @@ dialog::backdrop {
 }
 
 .priority {
+  display: flex;
+  align-items: center;
   padding: 4px;
+}
+
+.delete {
+  border-radius: 16px;
+  padding: 4px;
+  margin-left: auto;
 }
 
 .note-container input:focus {

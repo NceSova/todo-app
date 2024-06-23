@@ -25,15 +25,11 @@ export default class Controller {
     console.log(this.model.getNotesJson());
     this.view.renderNotes(notes);
   }
-  noteDblClickHandler(event: Event) {
-    const target = event.target as Element;
-    const parentUuid = target.parentElement.id;
-    console.log(parentUuid);
-    console.log(this);
-    console.log(this.model);
-    this.model.deleteNote(parentUuid);
+  noteDblClickHandler(uuid: string) {
+    this.model.deleteNote(uuid);
     this.render();
   }
+  deleteButton(e: Event) {}
   setNoteUpdateHandler(element: HTMLInputElement) {
     element.addEventListener("change", (e) => {
       const target = e.target as HTMLInputElement;

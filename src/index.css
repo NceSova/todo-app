@@ -4,25 +4,23 @@
   box-sizing: border-box;
 }
 
+:root {
+  --color-primary: #0e7490;
+  --color-primary-text: white;
+}
+
 body {
   height: 100vh;
 }
 
 .main-container {
   height: 100%;
-  display: grid;
-  grid-template-columns: 4fr 7fr;
+  display: flex;
+  flex-direction: column;
 }
 
 .main-sidebar {
-  display: grid;
-  grid-template-rows: 64px 1fr 1fr;
-}
-
-.form-sidebar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  height: 64px;
 }
 
 .title-sidebar {
@@ -53,9 +51,10 @@ dialog::backdrop {
 }
 
 .main-grid {
+  flex: 1;
   border: 2px solid blue;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-template-rows: repeat(auto-fit, 200px);
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-rows: repeat(auto-fit, 150px);
   display: grid;
   justify-items: center;
   padding: 16px;
@@ -63,8 +62,8 @@ dialog::backdrop {
 }
 
 .note-container {
-  width: clamp(200px, 100%, 400px);
-  height: 200px;
+  width: clamp(180px, 100%, 300px);
+  height: 150px;
   border-radius: 16px;
   border: 2px solid red;
   display: grid;
@@ -75,17 +74,21 @@ dialog::backdrop {
   height: fit-content;
   padding: 12px;
   width: 100%;
-  font-size: x-large;
+  font-size: 1.2rem;
   font-weight: 600;
   border: none;
   border-radius: 16px;
 }
 
 .description {
-  padding: 12px;
+  padding: 8px;
   width: 100%;
   height: 100%;
   border: none;
+}
+
+.priority {
+  padding: 4px;
 }
 
 .note-container input:focus {
@@ -102,4 +105,17 @@ dialog::backdrop {
   &:focus {
     outline: 2px dotted blue;
   }
+}
+
+.fab {
+  background-color: var(--color-primary);
+  color: var(--color-primary-text);
+  border: none;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  border-radius: 50px;
+  font-size: 32px;
+  height: 80px;
+  width: 80px;
 }

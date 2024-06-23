@@ -9,31 +9,32 @@
     <div class="main-container">
       <div class="main-sidebar">
         <div class="title-sidebar">To-Do</div>
-        <div class="form-sidebar">
-          <button type="button" onclick="window.newNoteDialog.showModal()">
-            Создать заметку
-          </button>
-          <dialog id="newNoteDialog">
-            <form action="" method="dialog">
-              <h3>Новая заметка</h3>
-              <input
-                name="title"
-                id="formTitle"
-                type="text"
-                placeholder="Название" />
-              <textarea
-                id="formDescription"
-                name="description"
-                placeholder="Основной текст..."></textarea>
-              <select name="priority" id="formPriority">
-                <option value="low">low</option>
-                <option value="mid">mid</option>
-                <option value="high">high</option>
-              </select>
-              <button type="submit">Создать</button>
-            </form>
-          </dialog>
-        </div>
+        <button
+          type="button"
+          class="fab"
+          onclick="window.newNoteDialog.showModal()">
+          +
+        </button>
+        <dialog id="newNoteDialog">
+          <form action="" method="dialog">
+            <h3>Новая заметка</h3>
+            <input
+              name="title"
+              id="formTitle"
+              type="text"
+              placeholder="Название" />
+            <textarea
+              id="formDescription"
+              name="description"
+              placeholder="Основной текст..."></textarea>
+            <select name="priority" id="formPriority">
+              <option value="low">low</option>
+              <option value="mid">mid</option>
+              <option value="high">high</option>
+            </select>
+            <button type="submit">Создать</button>
+          </form>
+        </dialog>
       </div>
       <div class="main-grid"></div>
     </div>

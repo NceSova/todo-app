@@ -31,6 +31,25 @@ export default class Model {
   }
 
   saveNotes() {
+    this._list.sort(function (a, b) {
+      function priorityToNumber(priority: string) {
+        switch (priority) {
+          case "low":
+            return 1;
+            break;
+          case "mid":
+            return 2;
+            break;
+          case "high":
+            return 3;
+            break;
+          default:
+            return 0;
+            break;
+        }
+      }
+      return priorityToNumber(b.priority) - priorityToNumber(a.priority);
+    });
     localStorage.setItem("notes", this.getNotesJson());
   }
 

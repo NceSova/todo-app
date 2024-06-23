@@ -37,6 +37,7 @@ export default class View {
 
     const priority = this.document.createElement("div");
     priority.className = "priority";
+    noteDiv.classList.add(note.priority);
     priority.textContent = "Приоритет: " + note.priority;
 
     noteDiv.appendChild(title);

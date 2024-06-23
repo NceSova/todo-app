@@ -42,25 +42,30 @@ body {
 }
 
 dialog form {
+  font-size: 1.2rem;
   width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 8px;
   & input {
+    font-size: 1.4rem;
     width: 100%;
     height: 32px;
   }
   & textarea {
+    font-size: 1.2rem;
     resize: none;
     width: 100%;
     height: 120px;
   }
   & select {
+    font-size: 1.2rem;
     padding: 8px;
     width: 100%;
   }
   & button {
+    font-size: 1.4rem;
     padding: 8px;
     margin: 4px;
     border-radius: 12px;
